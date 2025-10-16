@@ -1,0 +1,35 @@
+{
+  "name": "wordcloud",
+  "version": "1.0.0",
+  "description": "A word cloud is a type of visualization that displays the frequency of words in a given text. More frequent words appear larger, while less common words are shown smaller. This method is commonly used in data analysis to quickly identify key themes or topics in large text datasets, offering an intuitive way to summarize and present information.",
+  "dependencies": {
+    "d3": "^7.9.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "keywords": [
+    "Javascript",
+    "d3",
+    "HTML",
+    "CSS"
+  ],
+  "author": "David Florim",
+  "license": "ISC",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
