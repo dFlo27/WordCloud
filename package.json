@@ -1,6 +1,6 @@
 {
   "name": "wordcloud",
-  "homepage": "https://dflo27.github.io/wordcloud",
+  "homepage": "https://dflo27.github.io/WordCloud",
   "version": "1.0.0",
   "description": "A word cloud is a type of visualization that displays the frequency of words in a given text. More frequent words appear larger, while less common words are shown smaller. This method is commonly used in data analysis to quickly identify key themes or topics in large text datasets, offering an intuitive way to summarize and present information.",
   "dependencies": {
