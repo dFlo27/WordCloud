@@ -31,14 +31,7 @@ class App extends Component {
     console.log(data)
     // your code here
 
-    // Handle textarea resize
-    let new_width = 1000;
-    d3.select("textarea").on("click", (event) => {
-      new_width = event.target.style["width"];
-      d3.select(".child1").style("width", new_width);
-      d3.select("button").style("width", new_width);
-      d3.select("svg").style("width", new_width);
-    });
+    const prev_data = d3.select("svg").selectAll("text").nodes().map(item => [item.textContent, item.getAttribute("font-size")]);
 
     // Word cloud logic
     const font_size = d3.scaleLinear()
@@ -48,12 +41,32 @@ class App extends Component {
       .domain([0, 4])
       .range([10, 800])
     d3.select("svg").selectAll("text").data(data)
-      .join("text")
-      .attr("x", (_, i) => text_pos(i))
-      .attr("y", 75)
-      .transition().duration(4000).delay(1000)
-      .attr("font-size", (d, _) => font_size(d[1]))
-      .text((d, _) => d[0]);
+      .join(
+        enter => enter.append("text")
+          .attr("x", (d, i) => text_pos(i))
+          .attr("y", 75)
+          .transition().duration(4000)
+          .attr("font-size", (d, _) => font_size(d[1]))
+          .text((d, _) => d[0]),
+        update => update
+            .attr("font-size", (d, _) => {
+              const node = prev_data.find(item => item[0] === d[0]);
+              if (node) {
+                return node[1];
+              } return 0;
+            })
+            .attr("x", (d, i) => {
+              const index = prev_data.findIndex(item => item[0] === d[0]);
+              if (index != -1)
+                return text_pos(index);
+              return text_pos(i);
+            })
+            .transition().duration(4000)
+            .attr("font-size", (d, _) => font_size(d[1]))
+            .attr("x", (d, i) => text_pos(i))
+            .text((d, _) => d[0]),
+        exit => exit.remove()
+      );
   }
 
   render() {
