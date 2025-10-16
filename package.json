@@ -1,5 +1,6 @@
 {
   "name": "wordcloud",
+  "homepage": "https://dflo27.github.io/wordcloud",
   "version": "1.0.0",
   "description": "A word cloud is a type of visualization that displays the frequency of words in a given text. More frequent words appear larger, while less common words are shown smaller. This method is commonly used in data analysis to quickly identify key themes or topics in large text datasets, offering an intuitive way to summarize and present information.",
   "dependencies": {
@@ -10,7 +11,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "Javascript",
@@ -31,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
