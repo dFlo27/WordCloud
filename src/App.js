@@ -41,15 +41,18 @@ class App extends Component {
     });
 
     // Word cloud logic
-    var linearScale = d3.scaleLinear()
-      .domain([0, 10])
-      .range([0, 100]);
+    const font_size = d3.scaleLinear()
+      .domain([0, 5])
+      .range([0, 40]);
+    const text_pos = d3.scaleLinear()
+      .domain([0, 4])
+      .range([10, 800])
     d3.select("svg").selectAll("text").data(data)
       .join("text")
+      .attr("x", (_, i) => text_pos(i))
       .attr("y", 75)
       .transition().duration(4000).delay(1000)
-      .attr("x", (d, _) => linearScale(d[1]))
-      .attr("font-size", (d, _) => linearScale(d[1]))
+      .attr("font-size", (d, _) => font_size(d[1]))
       .text((d, _) => d[0]);
   }
 
